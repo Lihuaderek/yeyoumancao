@@ -66,21 +66,7 @@ export const MerchantProductForm: React.FC = () => {
     return data.url;
   };
 
-  const handleOptionImageChange = async (e: React.ChangeEvent<HTMLInputElement>, list: any[], setList: Function, index: number) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    try {
-      setLoading(true);
-      const url = await handleImageUpload(file);
-      const newList = [...list];
-      newList[index].image = url;
-      setList(newList);
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+
 
   const validateMainImage = (file: File): Promise<void> => {
     return new Promise((resolve, reject) => {
@@ -123,17 +109,7 @@ export const MerchantProductForm: React.FC = () => {
             <input placeholder="名称" value={item.name} onChange={e => { const n = [...list]; n[index].name = e.target.value; setList(n); }} className="w-full p-2 border rounded text-xs" required />
             <input type="number" placeholder="加价" value={item.priceOffset} onChange={e => { const n = [...list]; n[index].priceOffset = Number(e.target.value); setList(n); }} className="w-full p-2 border rounded text-xs" required />
           </div>
-          <div className="w-24 text-center">
-            {item.image ? (
-               <img src={item.image} className="w-full h-16 object-cover border rounded mb-1" />
-            ) : (
-               <div className="w-full h-16 bg-rice border rounded mb-1 flex items-center justify-center text-xs text-ink-muted">无图</div>
-            )}
-            <label className="text-[10px] cursor-pointer text-vermilion hover:underline">
-              上传图片
-              <input type="file" accept="image/*" className="hidden" onChange={e => handleOptionImageChange(e, list, setList, index)} />
-            </label>
-          </div>
+
           <button type="button" onClick={() => { const n = [...list]; n.splice(index, 1); setList(n); }} className="text-red-500 mt-2"><Trash2 className="w-4 h-4" /></button>
         </div>
       ))}
