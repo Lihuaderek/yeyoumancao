@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <linearGradient id="mGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EAE5DC" />
+      <stop offset="100%" stop-color="#D5CEBF" />
+    </linearGradient>
+    <linearGradient id="clothGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F5" />
+      <stop offset="100%" stop-color="#E2DBD0" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="600" height="800" fill="url(#mGrad1)" />
+  
+  <!-- Male Silhouette for Virtual Try-On -->
+  <!-- Head -->
+  <ellipse cx="300" cy="220" rx="65" ry="85" fill="#E8D1BC" />
+  <!-- Hair -->
+  <path d="M 235 200 C 235 130 365 130 365 200 C 350 160 250 160 235 200 Z" fill="#2B2725" />
+  <!-- Neck -->
+  <rect x="275" y="290" width="50" height="70" fill="#DFBEA5" />
+  <!-- Shoulders & Upper Body T-shirt/Robe to be replaced -->
+  <path d="
+    M 275 350
+    C 230 360, 160 380, 130 430
+    L 150 780
+    L 450 780
+    L 470 430
+    C 440 380, 370 360, 325 350
+    Z
+  " fill="url(#clothGrad1)" stroke="#CCC2B2" stroke-width="2" />
+  <!-- Simple Collar -->
+  <path d="M 275 350 Q 300 380 325 350" fill="none" stroke="#B8AC99" stroke-width="3" />
+
+  <text x="300" y="740" font-family="serif" font-size="20" fill="#8C7F6E" text-anchor="middle" letter-spacing="4">示范人像 · 男士测试模特</text>
+</svg>

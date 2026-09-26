@@ -1,0 +1,19 @@
+[
+  {
+    "id": "m_1790413600579",
+    "merchantId": "1790413486512",
+    "merchantName": "cdl",
+    "name": "测试",
+    "category": "明制婚服",
+    "price": 177777,
+    "originalPrice": 266665,
+    "image": "/api/uploads/1790413599898-140454581.png",
+    "description": "买了我把网页卖你",
+    "tags": [
+      "商家定制",
+      "原创设计"
+    ],
+    "target": "全部",
+    "createdAt": "2026-09-26T09:06:40.579Z"
+  }
+]

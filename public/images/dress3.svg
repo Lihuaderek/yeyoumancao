@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D1111" />
+      <stop offset="100%" stop-color="#160808" />
+    </linearGradient>
+    <linearGradient id="crimsonRobe3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9E1515" />
+      <stop offset="50%" stop-color="#C22020" />
+      <stop offset="100%" stop-color="#8A0F0F" />
+    </linearGradient>
+    <linearGradient id="gold3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2BF" />
+      <stop offset="45%" stop-color="#D9A74A" />
+      <stop offset="100%" stop-color="#9E7020" />
+    </linearGradient>
+    <linearGradient id="skirtGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B22222" />
+      <stop offset="100%" stop-color="#690909" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="800" fill="url(#bgGrad3)" />
+  <rect x="25" y="25" width="550" height="750" fill="none" stroke="#D9A74A" stroke-width="1.5" stroke-opacity="0.3" rx="8" />
+  <circle cx="300" cy="380" r="240" fill="#B22222" fill-opacity="0.05" />
+
+  <!-- Corner Ornaments -->
+  <path d="M 35 55 L 55 55 L 55 35" fill="none" stroke="#D9A74A" stroke-width="2" />
+  <path d="M 565 55 L 545 55 L 545 35" fill="none" stroke="#D9A74A" stroke-width="2" />
+  <path d="M 35 745 L 55 745 L 55 765" fill="none" stroke="#D9A74A" stroke-width="2" />
+  <path d="M 565 745 L 545 745 L 545 765" fill="none" stroke="#D9A74A" stroke-width="2" />
+
+  <!-- Garment: Women's Xiuhe Suit -->
+  <g id="womens-xiuhe" transform="translate(0, 45)">
+    <!-- Lower Multi-panel Pleated Skirt (百褶马面裙) -->
+    <path d="M 220 340 L 130 660 L 470 660 L 380 340 Z" fill="url(#skirtGrad3)" />
+    
+    <!-- Skirt Panels & Pleat Lines -->
+    <line x1="260" y1="340" x2="210" y2="660" stroke="url(#gold3)" stroke-width="2" />
+    <line x1="300" y1="340" x2="300" y2="660" stroke="url(#gold3)" stroke-width="3" />
+    <line x1="340" y1="340" x2="390" y2="660" stroke="url(#gold3)" stroke-width="2" />
+
+    <!-- Center Skirt Apron Embroidery (马面绣花) -->
+    <rect x="260" y="370" width="80" height="250" fill="#7E1212" stroke="url(#gold3)" stroke-width="1.5" />
+    <path d="M 300 400 C 280 430 320 460 300 490 C 280 520 320 550 300 580" fill="none" stroke="url(#gold3)" stroke-width="2" />
+    <circle cx="300" cy="430" r="8" fill="url(#gold3)" />
+    <circle cx="300" cy="520" r="8" fill="url(#gold3)" />
+
+    <!-- Skirt Hem Gold Trim with Tassels (下摆水脚金边流苏) -->
+    <path d="M 130 640 L 470 640 L 470 660 L 130 660 Z" fill="url(#gold3)" />
+    <!-- Tassels -->
+    <g stroke="url(#gold3)" stroke-width="1.5">
+      <line x1="160" y1="660" x2="160" y2="675" />
+      <line x1="210" y1="660" x2="210" y2="678" />
+      <line x1="260" y1="660" x2="260" y2="680" />
+      <line x1="300" y1="660" x2="300" y2="685" />
+      <line x1="340" y1="660" x2="340" y2="680" />
+      <line x1="390" y1="660" x2="390" y2="678" />
+      <line x1="440" y1="660" x2="440" y2="675" />
+    </g>
+
+    <!-- Upper Jacket (立领对襟刺绣上衣) -->
+    <path d="M 230 130 L 110 240 L 160 290 L 220 230 L 220 360 L 380 360 L 380 230 L 440 290 L 490 240 L 370 130 Z" fill="url(#crimsonRobe3)" filter="drop-shadow(0 15px 25px rgba(0,0,0,0.6))" />
+
+    <!-- Layered Cuffs (三道刺绣挽袖) -->
+    <polygon points="110,240 160,290 175,275 125,225" fill="url(#gold3)" />
+    <polygon points="490,240 440,290 425,275 475,225" fill="url(#gold3)" />
+
+    <!-- Ruyi Cloud Collar (如意云肩) -->
+    <path d="M 300 135 C 240 150 200 190 230 220 C 260 250 280 230 300 245 C 320 230 340 250 370 220 C 400 190 360 150 300 135 Z" fill="#750E0E" stroke="url(#gold3)" stroke-width="2.5" />
+    <!-- Cloud Collar Tassels/Jewels -->
+    <circle cx="230" cy="220" r="3" fill="url(#gold3)" />
+    <circle cx="300" cy="245" r="4" fill="url(#gold3)" />
+    <circle cx="370" cy="220" r="3" fill="url(#gold3)" />
+
+    <!-- Mandarin Collar -->
+    <path d="M 265 135 C 265 115 335 115 335 135 L 345 150 C 345 130 255 130 255 150 Z" fill="url(#gold3)" />
+
+    <!-- Front Placket (大襟刺绣边) -->
+    <path d="M 300 145 Q 330 180 355 220 L 355 360" fill="none" stroke="url(#gold3)" stroke-width="4.5" />
+
+    <!-- Frog Buttons with Pearls -->
+    <g fill="#FFF2BF" stroke="url(#gold3)" stroke-width="1.5">
+      <circle cx="295" cy="155" r="3" />
+      <circle cx="320" cy="180" r="3" />
+      <circle cx="345" cy="210" r="3" />
+      <circle cx="355" cy="250" r="3" />
+      <circle cx="355" cy="295" r="3" />
+      <circle cx="355" cy="340" r="3" />
+    </g>
+
+    <!-- Flying Golden Phoenix (凤栖牡丹刺绣) -->
+    <g transform="translate(250, 260)">
+      <!-- Phoenix Body & Head -->
+      <path d="M 20 20 Q 35 5 45 25 Q 40 45 15 35" fill="none" stroke="url(#gold3)" stroke-width="2.5" />
+      <!-- Wing -->
+      <path d="M 30 15 Q 15 -10 5 10 Q 15 25 30 15" fill="url(#gold3)" fill-opacity="0.4" stroke="url(#gold3)" stroke-width="1.5" />
+      <!-- Tail Feathers -->
+      <path d="M 15 35 Q -10 45 -5 65 Q 10 50 20 40" fill="none" stroke="url(#gold3)" stroke-width="2" />
+      <path d="M 15 35 Q 0 55 10 75 Q 18 60 22 42" fill="none" stroke="url(#gold3)" stroke-width="1.5" />
+    </g>
+
+    <!-- Lower Edge Gold Border -->
+    <path d="M 220 355 L 380 355 L 380 363 L 220 363 Z" fill="url(#gold3)" />
+  </g>
+
+  <!-- Title Badge Inset -->
+  <g transform="translate(300, 720)">
+    <rect x="-140" y="-20" width="280" height="40" rx="4" fill="#160808" stroke="#D9A74A" stroke-width="1.5" />
+    <text x="0" y="6" font-family="'Noto Serif SC', serif" font-size="16" fill="#FFF2BF" font-weight="600" text-anchor="middle" letter-spacing="3">凤冠霞帔 · 女士经典秀禾吉服</text>
+  </g>
+</svg>

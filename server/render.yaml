@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: yeyoumancao-vton-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: HF_TOKEN
+        sync: false

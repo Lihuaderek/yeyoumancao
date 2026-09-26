@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D1A1A" />
+      <stop offset="100%" stop-color="#140D0D" />
+    </linearGradient>
+    <linearGradient id="redRobe1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B1818" />
+      <stop offset="35%" stop-color="#B22222" />
+      <stop offset="70%" stop-color="#9C1A1A" />
+      <stop offset="100%" stop-color="#731010" />
+    </linearGradient>
+    <linearGradient id="goldTrim1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7E2A9" />
+      <stop offset="50%" stop-color="#C9A96E" />
+      <stop offset="100%" stop-color="#8E6A28" />
+    </linearGradient>
+    <filter id="softGlow1" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="800" fill="url(#bgGrad1)" />
+  <rect x="25" y="25" width="550" height="750" fill="none" stroke="#C9A96E" stroke-width="1.5" stroke-opacity="0.3" rx="8" />
+  <circle cx="300" cy="380" r="240" fill="#B22222" fill-opacity="0.05" />
+
+  <!-- Traditional Frame Corners -->
+  <path d="M 35 55 L 55 55 L 55 35" fill="none" stroke="#C9A96E" stroke-width="2" />
+  <path d="M 565 55 L 545 55 L 545 35" fill="none" stroke="#C9A96E" stroke-width="2" />
+  <path d="M 35 745 L 55 745 L 55 765" fill="none" stroke="#C9A96E" stroke-width="2" />
+  <path d="M 565 745 L 545 745 L 545 765" fill="none" stroke="#C9A96E" stroke-width="2" />
+
+  <!-- Garment: Men's Xiuhe Robe -->
+  <!-- Outer Robe Silhouette -->
+  <g id="mens-xiuhe" transform="translate(0, 40)">
+    <!-- Lower Robe Pleats (马面裙摆) -->
+    <path d="M 210 390 L 160 670 L 440 670 L 390 390 Z" fill="#660C0C" />
+    <!-- Gold Embroidered Bottom Border (江崖海水纹) -->
+    <path d="M 160 645 L 440 645 L 440 670 L 160 670 Z" fill="url(#goldTrim1)" />
+    <path d="M 160 655 Q 195 635 230 655 Q 265 635 300 655 Q 335 635 370 655 Q 405 635 440 655" fill="none" stroke="#8B1818" stroke-width="2" />
+    <line x1="300" y1="390" x2="300" y2="645" stroke="url(#goldTrim1)" stroke-width="3" />
+    <line x1="250" y1="410" x2="230" y2="645" stroke="#C9A96E" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="8 4" />
+    <line x1="350" y1="410" x2="370" y2="645" stroke="#C9A96E" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="8 4" />
+
+    <!-- Upper Jacket (长袍马褂上衣) -->
+    <!-- Sleeves Wide Angle -->
+    <path d="M 210 140 L 90 280 L 140 330 L 210 260 L 210 400 L 390 400 L 390 260 L 460 330 L 510 280 L 390 140 Z" fill="url(#redRobe1)" filter="drop-shadow(0 15px 25px rgba(0,0,0,0.6))" />
+
+    <!-- Sleeve Cuffs Trim -->
+    <polygon points="90,280 140,330 155,315 105,265" fill="url(#goldTrim1)" />
+    <polygon points="510,280 460,330 445,315 495,265" fill="url(#goldTrim1)" />
+
+    <!-- Mandarin Collar (立领) -->
+    <path d="M 260 145 C 260 120 340 120 340 145 L 350 160 C 350 140 250 140 250 160 Z" fill="url(#goldTrim1)" />
+    <circle cx="300" cy="148" r="4" fill="#C9A96E" />
+
+    <!-- Front Placket (右衽斜襟大襟) -->
+    <path d="M 300 155 Q 330 200 370 230 L 370 400" fill="none" stroke="url(#goldTrim1)" stroke-width="5" />
+    
+    <!-- Chinese Frog Buttons (盘扣) -->
+    <g stroke="url(#goldTrim1)" stroke-width="2" fill="#FAF7F0">
+      <!-- Button 1 -->
+      <circle cx="300" cy="165" r="3" />
+      <path d="M 292 165 C 285 160 285 170 292 165 M 308 165 C 315 160 315 170 308 165" />
+      <!-- Button 2 -->
+      <circle cx="325" cy="190" r="3" />
+      <path d="M 317 190 C 310 185 310 195 317 190 M 333 190 C 340 185 340 195 333 190" />
+      <!-- Button 3 -->
+      <circle cx="355" cy="220" r="3" />
+      <!-- Button 4 -->
+      <circle cx="370" cy="265" r="3" />
+      <!-- Button 5 -->
+      <circle cx="370" cy="315" r="3" />
+      <!-- Button 6 -->
+      <circle cx="370" cy="365" r="3" />
+    </g>
+
+    <!-- Chest Dragon Embroidery (胸前团龙祥云刺绣) -->
+    <g transform="translate(265, 235)">
+      <circle cx="20" cy="20" r="45" fill="none" stroke="url(#goldTrim1)" stroke-width="2" stroke-dasharray="3 3" />
+      <circle cx="20" cy="20" r="40" fill="#7A1010" stroke="url(#goldTrim1)" stroke-width="1.5" />
+      <!-- Dragon Shape Stylized -->
+      <path d="M 10 10 Q 30 -5 35 15 Q 40 35 25 35 Q 5 35 15 20 Q 25 5 10 10" fill="none" stroke="url(#goldTrim1)" stroke-width="2.5" />
+      <!-- Flaming Pearl -->
+      <circle cx="28" cy="8" r="4" fill="#F7E2A9" />
+    </g>
+
+    <!-- Hem Border (下摆祥云纹) -->
+    <path d="M 210 395 L 390 395 L 390 405 L 210 405 Z" fill="url(#goldTrim1)" />
+
+    <!-- Hanging Jade Pendant (压襟玉佩) -->
+    <line x1="370" y1="265" x2="370" y2="340" stroke="#FAF7F0" stroke-width="1.5" />
+    <circle cx="370" cy="340" r="7" fill="#69B3A2" stroke="#FAF7F0" stroke-width="1" />
+    <path d="M 367 347 L 367 380 M 370 347 L 370 385 M 373 347 L 373 380" stroke="#C9A96E" stroke-width="1.5" />
+  </g>
+
+  <!-- Title Badge Inset -->
+  <g transform="translate(300, 720)">
+    <rect x="-140" y="-20" width="280" height="40" rx="4" fill="#1A1A1A" stroke="#C9A96E" stroke-width="1.5" />
+    <text x="0" y="6" font-family="'Noto Serif SC', serif" font-size="16" fill="#F7E2A9" font-weight="600" text-anchor="middle" letter-spacing="3">乾坤和合 · 男士秀禾长袍</text>
+  </g>
+</svg>

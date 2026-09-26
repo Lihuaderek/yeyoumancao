@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#221808" />
+      <stop offset="100%" stop-color="#0E0A04" />
+    </linearGradient>
+    <!-- Solid Gold Thread Texture Gradient -->
+    <linearGradient id="guaHuangGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5CC" />
+      <stop offset="25%" stop-color="#E5C158" />
+      <stop offset="60%" stop-color="#CCA033" />
+      <stop offset="85%" stop-color="#F2D879" />
+      <stop offset="100%" stop-color="#A67C1A" />
+    </linearGradient>
+    <linearGradient id="silverThread" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#E2E6EC" />
+      <stop offset="100%" stop-color="#BAC2CC" />
+    </linearGradient>
+    <linearGradient id="goldDetail4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFEAA7" />
+      <stop offset="100%" stop-color="#D4AF37" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="800" fill="url(#bgGrad4)" />
+  <rect x="25" y="25" width="550" height="750" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-opacity="0.3" rx="8" />
+  <circle cx="300" cy="380" r="240" fill="#D4AF37" fill-opacity="0.06" />
+
+  <!-- Corner Ornaments -->
+  <path d="M 35 55 L 55 55 L 55 35" fill="none" stroke="#D4AF37" stroke-width="2" />
+  <path d="M 565 55 L 545 55 L 545 35" fill="none" stroke="#D4AF37" stroke-width="2" />
+  <path d="M 35 745 L 55 745 L 55 765" fill="none" stroke="#D4AF37" stroke-width="2" />
+  <path d="M 565 745 L 545 745 L 545 765" fill="none" stroke="#D4AF37" stroke-width="2" />
+
+  <!-- Garment: Women's Longfeng Gua (Gua Huang) -->
+  <g id="womens-guahuang" transform="translate(0, 45)">
+    <!-- Lower A-line Skirt (金银密地裙) -->
+    <path d="M 230 350 L 170 660 L 430 660 L 370 350 Z" fill="url(#guaHuangGold)" stroke="#A67C1A" stroke-width="1" />
+    
+    <!-- Density Patterns / Wave Waters (五福临门与江崖海水) -->
+    <path d="M 170 630 L 430 630 L 430 660 L 170 660 Z" fill="url(#silverThread)" opacity="0.9" />
+    <path d="M 170 640 Q 200 620 235 640 Q 270 620 300 640 Q 330 620 365 640 Q 400 620 430 640" fill="none" stroke="#A67C1A" stroke-width="2" />
+
+    <!-- Skirt Center Dragon and Phoenix Playing with Pearl -->
+    <line x1="300" y1="350" x2="300" y2="630" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6 3" />
+    <circle cx="300" cy="460" r="14" fill="url(#silverThread)" stroke="#D4AF37" stroke-width="2" />
+    <path d="M 260 480 Q 240 440 280 430 Q 295 445 285 470" fill="none" stroke="#FFFFFF" stroke-width="3" />
+    <path d="M 340 480 Q 360 440 320 430 Q 305 445 315 470" fill="none" stroke="#FFFFFF" stroke-width="3" />
+
+    <!-- Upper Jacket (全密金银线直筒对襟上衣) -->
+    <path d="M 225 130 L 115 250 L 165 295 L 215 235 L 215 370 L 385 370 L 385 235 L 435 295 L 485 250 L 375 130 Z" fill="url(#guaHuangGold)" filter="drop-shadow(0 15px 30px rgba(0,0,0,0.75))" />
+
+    <!-- Pure Silver Thread Cuffs -->
+    <polygon points="115,250 165,295 180,280 130,235" fill="url(#silverThread)" />
+    <polygon points="485,250 435,295 420,280 470,235" fill="url(#silverThread)" />
+
+    <!-- Center Placket (中式正对襟) -->
+    <rect x="293" y="140" width="14" height="230" fill="url(#silverThread)" stroke="#A67C1A" stroke-width="1" />
+
+    <!-- Mandarin Collar -->
+    <path d="M 260 140 C 260 118 340 118 340 140 L 350 155 C 350 135 250 135 250 155 Z" fill="url(#silverThread)" stroke="#A67C1A" stroke-width="1.5" />
+
+    <!-- Traditional Frog Buttons (手工银线盘扣) -->
+    <g fill="#FFFFFF" stroke="#997A15" stroke-width="1.5">
+      <circle cx="300" cy="165" r="4" />
+      <circle cx="300" cy="205" r="4" />
+      <circle cx="300" cy="245" r="4" />
+      <circle cx="300" cy="285" r="4" />
+      <circle cx="300" cy="325" r="4" />
+      <circle cx="300" cy="360" r="4" />
+    </g>
+
+    <!-- Stereoscopic Dragon & Phoenix (浮雕立体金银龙凤) -->
+    <!-- Dragon (Left Side) -->
+    <path d="M 245 190 Q 220 220 250 250 Q 275 270 255 300" fill="none" stroke="url(#silverThread)" stroke-width="4.5" stroke-linecap="round" />
+    <circle cx="242" cy="188" r="6" fill="#FFF" />
+    <circle cx="242" cy="188" r="3" fill="#B22222" />
+
+    <!-- Phoenix (Right Side) -->
+    <path d="M 355 190 Q 380 220 350 250 Q 325 270 345 300" fill="none" stroke="url(#silverThread)" stroke-width="4.5" stroke-linecap="round" />
+    <circle cx="358" cy="188" r="6" fill="#FFF" />
+    <circle cx="358" cy="188" r="3" fill="#B22222" />
+
+    <!-- Bats of Five Blessings (肩头五福金蝠) -->
+    <path d="M 180 180 Q 190 170 200 180 Q 190 190 180 180 Z" fill="#FFF" stroke="#A67C1A" stroke-width="1" />
+    <path d="M 420 180 Q 410 170 400 180 Q 410 190 420 180 Z" fill="#FFF" stroke="#A67C1A" stroke-width="1" />
+
+    <!-- Jacket Bottom Hem -->
+    <rect x="215" y="363" width="170" height="7" fill="url(#silverThread)" />
+  </g>
+
+  <!-- Title Badge Inset -->
+  <g transform="translate(300, 720)">
+    <rect x="-140" y="-20" width="280" height="40" rx="4" fill="#0E0A04" stroke="#D4AF37" stroke-width="1.5" />
+    <text x="0" y="6" font-family="'Noto Serif SC', serif" font-size="16" fill="#FFF5CC" font-weight="600" text-anchor="middle" letter-spacing="3">鸾凤和鸣 · 女士龙凤褂（褂皇）</text>
+  </g>
+</svg>

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700" width="500" height="700" fill="none">
+  <defs>
+    <!-- 朱红锦缎渐变 -->
+    <linearGradient id="arCrimson3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#871010" />
+      <stop offset="30%" stop-color="#BD1B1B" />
+      <stop offset="70%" stop-color="#BD1B1B" />
+      <stop offset="100%" stop-color="#871010" />
+    </linearGradient>
+    <linearGradient id="arGold3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3C4" />
+      <stop offset="45%" stop-color="#D9A74A" />
+      <stop offset="100%" stop-color="#A1721F" />
+    </linearGradient>
+    <linearGradient id="arSkirt3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A81515" />
+      <stop offset="100%" stop-color="#590808" />
+    </linearGradient>
+    <filter id="garmentShadow3" x="-15%" y="-10%" width="130%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <g filter="url(#garmentShadow3)">
+    <!-- 女士大摆马面百褶裙 (Flared A-line Pleated Skirt) -->
+    <path d="M 190 320 L 100 670 L 400 670 L 310 320 Z" fill="url(#arSkirt3)" />
+
+    <!-- 裙褶裥金边 (Skirt Pleats) -->
+    <line x1="220" y1="330" x2="160" y2="670" stroke="url(#arGold3)" stroke-width="2" />
+    <line x1="250" y1="320" x2="250" y2="670" stroke="url(#arGold3)" stroke-width="3" />
+    <line x1="280" y1="330" x2="340" y2="670" stroke="url(#arGold3)" stroke-width="2" />
+
+    <!-- 裙门中心刺绣绣面 (Center Embroidered Panel) -->
+    <rect x="220" y="350" width="60" height="270" fill="#780F0F" stroke="url(#arGold3)" stroke-width="1.5" />
+    <path d="M 250 370 C 235 395 265 420 250 445 C 235 470 265 495 250 520 C 235 545 265 570 250 595" stroke="url(#arGold3)" stroke-width="1.8" fill="none" />
+    <circle cx="250" cy="400" r="6" fill="url(#arGold3)" />
+    <circle cx="250" cy="480" r="6" fill="url(#arGold3)" />
+    <circle cx="250" cy="560" r="6" fill="url(#arGold3)" />
+
+    <!-- 裙摆金色包边与流苏穗 (Hem Trim & Tassels) -->
+    <path d="M 100 655 L 400 655 L 400 670 L 100 670 Z" fill="url(#arGold3)" />
+    <!-- 金流苏 -->
+    <g stroke="url(#arGold3)" stroke-width="1.5">
+      <line x1="120" y1="670" x2="120" y2="685" />
+      <line x1="160" y1="670" x2="160" y2="688" />
+      <line x1="200" y1="670" x2="200" y2="690" />
+      <line x1="250" y1="670" x2="250" y2="693" />
+      <line x1="300" y1="670" x2="300" y2="690" />
+      <line x1="340" y1="670" x2="340" y2="688" />
+      <line x1="380" y1="670" x2="380" y2="685" />
+    </g>
+
+    <!-- 上身秀禾宽袖吉服上衣 (Women's Xiuhe Blouse) -->
+    <path d="
+      M 215 50
+      C 185 58, 145 68, 120 80
+      L 55 190
+      L 100 235
+      L 165 180
+      L 180 330
+      L 320 330
+      L 335 180
+      L 400 235
+      L 445 190
+      C 420 68, 385 58, 355 50
+      C 340 40, 310 35, 250 35
+      C 190 35, 160 40, 215 50
+      Z
+    " fill="url(#arCrimson3)" />
+
+    <!-- 三道挽袖刺绣金边 (Layered Cuffs) -->
+    <polygon points="55,190 100,235 112,223 67,178" fill="url(#arGold3)" />
+    <polygon points="445,190 400,235 388,223 433,178" fill="url(#arGold3)" />
+
+    <!-- 经典如意云肩 (Ruyi Cloud Collar) -->
+    <path d="
+      M 250 48
+      C 200 65, 175 105, 195 130
+      C 220 155, 235 140, 250 155
+      C 265 140, 280 155, 305 130
+      C 325 105, 300 65, 250 48
+      Z
+    " fill="#690909" stroke="url(#arGold3)" stroke-width="2.5" />
+    <!-- 云肩垂珠 -->
+    <circle cx="195" cy="130" r="3.5" fill="#FFF3C4" />
+    <circle cx="250" cy="155" r="4" fill="#FFF3C4" />
+    <circle cx="305" cy="130" r="3.5" fill="#FFF3C4" />
+
+    <!-- 立领 (Collar) -->
+    <path d="
+      M 210 52
+      C 210 32, 290 32, 290 52
+      L 298 64
+      C 298 42, 202 42, 202 64
+      Z
+    " fill="url(#arGold3)" stroke="#871010" stroke-width="0.8" />
+
+    <!-- 前襟大襟弧线 (Placket) -->
+    <path d="M 250 55 Q 275 90 295 130 L 295 330" fill="none" stroke="url(#arGold3)" stroke-width="4.5" />
+
+    <!-- 盘扣 (Frog Buttons with Pearl Beads) -->
+    <g fill="#FFF3C4" stroke="url(#arGold3)" stroke-width="1.2">
+      <circle cx="250" cy="62" r="3.5" />
+      <circle cx="270" cy="85" r="3.5" />
+      <circle cx="285" cy="115" r="3.5" />
+      <circle cx="295" cy="150" r="3.5" />
+      <circle cx="295" cy="195" r="3.5" />
+      <circle cx="295" cy="245" r="3.5" />
+      <circle cx="295" cy="295" r="3.5" />
+    </g>
+
+    <!-- 凤栖牡丹刺绣 (Golden Phoenix Embroidery) -->
+    <g transform="translate(205, 175)">
+      <!-- 凤首与凤冠 -->
+      <path d="M 18 18 Q 30 5 40 22 Q 35 40 15 30" fill="none" stroke="url(#arGold3)" stroke-width="2.5" />
+      <!-- 金凤展翅 -->
+      <path d="M 28 14 Q 15 -6 4 10 Q 15 22 28 14" fill="url(#arGold3)" fill-opacity="0.45" stroke="url(#arGold3)" stroke-width="1.5" />
+      <!-- 凤尾飘带 -->
+      <path d="M 15 30 Q -6 40 -2 58 Q 12 45 20 35" fill="none" stroke="url(#arGold3)" stroke-width="2" />
+      <path d="M 15 30 Q 3 50 12 68 Q 18 54 22 37" fill="none" stroke="url(#arGold3)" stroke-width="1.6" />
+    </g>
+
+    <!-- 下摆金饰波浪 -->
+    <path d="M 180 326 L 320 326 L 320 334 L 180 334 Z" fill="url(#arGold3)" />
+  </g>
+</svg>
