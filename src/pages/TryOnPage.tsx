@@ -117,13 +117,41 @@ export const TryOnPage: React.FC = () => {
 
   const garmentIdParam = searchParams.get('id');
   const initialGarment = GARMENTS.find(g => g.id === garmentIdParam) || GARMENTS[0];
-
+  
   const [selectedGarment, setSelectedGarment] = useState<Garment>(initialGarment);
+  const [allProducts, setAllProducts] = useState<Garment[]>([...GARMENTS]);
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then(r => r.json())
+      .then(data => {
+        if (data.success && data.products) {
+          const combined = [...GARMENTS, ...data.products];
+          setAllProducts(combined);
+          const found = combined.find((g: Garment) => g.id === garmentIdParam);
+          if (found) setSelectedGarment(found);
+        }
+      })
+      .catch(console.error);
+  }, [garmentIdParam]);
   const [userImage, setUserImage] = useState<string | null>(null);
   const [isCameraModalOpen, setIsCameraModalOpen] = useState(false);
 
-  const [color, setColor] = useState<'red' | 'gold' | 'pink' | 'blue'>('red');
-  const [fabric, setFabric] = useState<'silk' | 'satin' | 'embroidery'>('silk');
+  const [color, setColor] = useState<string>('red');
+  const [fabric, setFabric] = useState<string>('silk');
+
+  useEffect(() => {
+    if (selectedGarment.merchantColors && selectedGarment.merchantColors.length > 0) {
+      setColor(selectedGarment.merchantColors[0].id);
+    } else {
+      setColor('red');
+    }
+    if (selectedGarment.merchantFabrics && selectedGarment.merchantFabrics.length > 0) {
+      setFabric(selectedGarment.merchantFabrics[0].id);
+    } else {
+      setFabric('silk');
+    }
+  }, [selectedGarment]);
   const [size, setSize] = useState<'S' | 'M' | 'L' | 'XL'>('M');
 
   const [status, setStatus] = useState<'idle' | 'generating' | 'success' | 'error'>('idle');
@@ -212,7 +240,8 @@ export const TryOnPage: React.FC = () => {
   };
 
   const prepareGarmentCanvas = async () => {
-    const garmentImg = await loadImage(selectedGarment.image);
+    const cObj = (selectedGarment.merchantColors || COLOR_OPTIONS).find((c: any) => c.id === color);
+    const garmentImg = await loadImage((cObj as any)?.image || selectedGarment.overlayImage || selectedGarment.image);
     const gW = garmentImg.naturalWidth;
     const gH = garmentImg.naturalHeight;
 
@@ -225,8 +254,7 @@ export const TryOnPage: React.FC = () => {
     
     const bounds = getGarmentBounds(gCtx, gW, gH);
 
-    const cObj = COLOR_OPTIONS.find(c => c.id === color);
-    if (cObj) {
+    if (cObj && cObj.hex) {
       gCtx.save();
       gCtx.globalCompositeOperation = 'source-atop';
       gCtx.globalAlpha = 0.3;
@@ -604,24 +632,14 @@ export const TryOnPage: React.FC = () => {
               <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleUserFileChange} />
             </div>
 
-            <div>
-              <label className="text-xs font-serif font-bold block mb-2">选择礼服</label>
-              <div className="grid grid-cols-3 gap-2 max-h-48 overflow-y-auto">
-                {GARMENTS.map(g => (
-                  <div key={g.id} onClick={() => setSelectedGarment(g)} className={`p-1 border cursor-pointer ${selectedGarment.id === g.id ? 'border-vermilion bg-vermilion/5' : 'border-gold/30'}`}>
-                    <img src={g.image} className="w-full aspect-[3/4] object-cover" />
-                    <div className="text-[10px] truncate text-center mt-1">{g.name}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+
 
             <div className="space-y-3 pt-3 border-t border-gold/20">
               <div className="grid grid-cols-4 gap-1">
-                {COLOR_OPTIONS.map(c => <button key={c.id} onClick={() => setColor(c.id)} className={`py-1 text-[10px] border ${color === c.id ? 'border-vermilion text-vermilion' : 'border-gold/30'}`}>{c.name.slice(2)}</button>)}
+                {(selectedGarment.merchantColors || COLOR_OPTIONS).map((c: any) => <button key={c.id} onClick={() => setColor(c.id)} className={`py-1 text-[10px] border ${color === c.id ? 'border-vermilion text-vermilion' : 'border-gold/30'}`}>{c.name.length > 2 && c.hex ? c.name.slice(2) : c.name}</button>)}
               </div>
               <div className="grid grid-cols-3 gap-1">
-                {FABRIC_OPTIONS.map(f => <button key={f.id} onClick={() => setFabric(f.id)} className={`py-1 text-[10px] border ${fabric === f.id ? 'border-vermilion text-vermilion' : 'border-gold/30'}`}>{f.name}</button>)}
+                {(selectedGarment.merchantFabrics || FABRIC_OPTIONS).map((f: any) => <button key={f.id} onClick={() => setFabric(f.id)} className={`py-1 text-[10px] border ${fabric === f.id ? 'border-vermilion text-vermilion' : 'border-gold/30'}`}>{f.name}</button>)}
               </div>
               <div className="grid grid-cols-4 gap-1">
                 {(['S', 'M', 'L', 'XL'] as const).map(s => <button key={s} onClick={() => setSize(s)} className={`py-1 text-[10px] border ${size === s ? 'bg-vermilion text-white' : 'border-gold/30'}`}>{s}</button>)}
