@@ -86,7 +86,7 @@ router.post('/upload', (req, res) => {
 // 3. Create Product
 router.post('/products', (req, res) => {
   try {
-    const { merchantId, name, category, price, imageUrl, description, merchantColors, merchantFabrics, merchantPatterns } = req.body;
+    const { merchantId, name, category, price, imageUrl, description, merchantColors, merchantFabrics, merchantPatterns, merchantVariants } = req.body;
     if (!merchantId || !name || !category || !price || !imageUrl) {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
@@ -141,7 +141,7 @@ router.get('/products', (req, res) => {
 router.put('/products/:id', (req, res) => {
   try {
     const { id } = req.params;
-    const { name, category, price, imageUrl, description, merchantColors, merchantFabrics, merchantPatterns } = req.body;
+    const { name, category, price, imageUrl, description, merchantColors, merchantFabrics, merchantPatterns, merchantVariants } = req.body;
     
     const products = readJson(PRODUCTS_FILE);
     const idx = products.findIndex(p => p.id === id);

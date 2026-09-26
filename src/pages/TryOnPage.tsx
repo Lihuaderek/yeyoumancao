@@ -241,7 +241,19 @@ export const TryOnPage: React.FC = () => {
 
   const prepareGarmentCanvas = async () => {
     const cObj = (selectedGarment.merchantColors || COLOR_OPTIONS).find((c: any) => c.id === color);
-    const garmentImg = await loadImage((cObj as any)?.image || selectedGarment.overlayImage || selectedGarment.image);
+    
+    let targetImageSrc = (cObj as any)?.image || selectedGarment.overlayImage || selectedGarment.image;
+    if (selectedGarment.merchantVariants && selectedGarment.merchantVariants.length > 0) {
+      const variant = selectedGarment.merchantVariants.find((v: any) => 
+        (v.colorId === color || (!v.colorId && (!selectedGarment.merchantColors || selectedGarment.merchantColors.length === 0))) &&
+        (v.fabricId === fabric || (!v.fabricId && (!selectedGarment.merchantFabrics || selectedGarment.merchantFabrics.length === 0)))
+      );
+      if (variant && variant.image) {
+        targetImageSrc = variant.image;
+      }
+    }
+    
+    const garmentImg = await loadImage(targetImageSrc);
     const gW = garmentImg.naturalWidth;
     const gH = garmentImg.naturalHeight;
 

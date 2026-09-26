@@ -15,5 +15,39 @@
     ],
     "target": "全部",
     "createdAt": "2026-09-26T09:06:40.579Z"
+  },
+  {
+    "id": "m_1790427800185",
+    "merchantId": "1790413486512",
+    "merchantName": "cdl",
+    "name": "test",
+    "category": "明制婚服",
+    "price": 1777777,
+    "originalPrice": 2666665,
+    "image": "/api/uploads/1790427799089-34928267.png",
+    "description": "测试勿买",
+    "tags": [
+      "商家定制",
+      "原创设计"
+    ],
+    "target": "全部",
+    "createdAt": "2026-09-26T13:03:20.185Z",
+    "merchantColors": [
+      {
+        "id": "1790427751266",
+        "name": "test",
+        "priceOffset": 0,
+        "image": "/api/uploads/1790427758107-404855851.png"
+      }
+    ],
+    "merchantFabrics": [
+      {
+        "id": "1790427768785",
+        "name": "test",
+        "priceOffset": 0,
+        "image": ""
+      }
+    ],
+    "merchantPatterns": []
   }
 ]

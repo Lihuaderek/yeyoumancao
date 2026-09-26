@@ -16,6 +16,7 @@ export const MerchantProductForm: React.FC = () => {
   const [colors, setColors] = useState<any[]>([]);
   const [fabrics, setFabrics] = useState<any[]>([]);
   const [patterns, setPatterns] = useState<any[]>([]);
+  const [variants, setVariants] = useState<any[]>([]);
   
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -33,10 +34,28 @@ export const MerchantProductForm: React.FC = () => {
             setColors(p.merchantColors || []);
             setFabrics(p.merchantFabrics || []);
             setPatterns(p.merchantPatterns || []);
+            if (p.merchantVariants) setVariants(p.merchantVariants);
           }
         });
     }
   }, [id]);
+
+  useEffect(() => {
+    setVariants(prev => {
+        const newVariants: any[] = [];
+        const colorIds = colors.length > 0 ? colors.map(c => c.id) : [undefined];
+        const fabricIds = fabrics.length > 0 ? fabrics.map(f => f.id) : [undefined];
+        
+        colorIds.forEach(cid => {
+          fabricIds.forEach(fid => {
+            if (cid === undefined && fid === undefined) return;
+            const existing = prev.find(v => v.colorId === cid && v.fabricId === fid);
+            newVariants.push({ colorId: cid, fabricId: fid, image: existing?.image || '' });
+          });
+        });
+        return newVariants;
+    });
+  }, [colors, fabrics]);
 
   const handleImageUpload = async (file: File) => {
     const formData = new FormData();
@@ -96,19 +115,19 @@ export const MerchantProductForm: React.FC = () => {
     <div className="border border-gold/30 p-4 rounded bg-white">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-serif font-bold text-sm">{title}</h3>
-        <button type="button" onClick={() => setList([...list, { id: Date.now().toString(), name: '', priceOffset: 0, image: '' }])} className="text-vermilion text-xs flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> 添加</button>
+        <button type="button" onClick={() => setList([...list, { id: Date.now().toString() + Math.random().toString().slice(2,6), name: '', priceOffset: 0, image: '' }])} className="text-vermilion text-xs flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> 添加</button>
       </div>
       {list.map((item, index) => (
         <div key={item.id} className="flex gap-3 mb-3 items-start border-b border-gold/10 pb-3">
           <div className="flex-1 space-y-2">
-            <input placeholder="名称 (如: 朱红)" value={item.name} onChange={e => { const n = [...list]; n[index].name = e.target.value; setList(n); }} className="w-full p-2 border rounded text-xs" required />
-            <input type="number" placeholder="加价 (如: 0 或 100)" value={item.priceOffset} onChange={e => { const n = [...list]; n[index].priceOffset = Number(e.target.value); setList(n); }} className="w-full p-2 border rounded text-xs" required />
+            <input placeholder="名称" value={item.name} onChange={e => { const n = [...list]; n[index].name = e.target.value; setList(n); }} className="w-full p-2 border rounded text-xs" required />
+            <input type="number" placeholder="加价" value={item.priceOffset} onChange={e => { const n = [...list]; n[index].priceOffset = Number(e.target.value); setList(n); }} className="w-full p-2 border rounded text-xs" required />
           </div>
           <div className="w-24 text-center">
             {item.image ? (
                <img src={item.image} className="w-full h-16 object-cover border rounded mb-1" />
             ) : (
-               <div className="w-full h-16 bg-rice border rounded mb-1 flex items-center justify-center text-xs text-ink-muted">无图片</div>
+               <div className="w-full h-16 bg-rice border rounded mb-1 flex items-center justify-center text-xs text-ink-muted">无图</div>
             )}
             <label className="text-[10px] cursor-pointer text-vermilion hover:underline">
               上传图片
@@ -142,7 +161,8 @@ export const MerchantProductForm: React.FC = () => {
         imageUrl: finalImageUrl,
         merchantColors: colors,
         merchantFabrics: fabrics,
-        merchantPatterns: patterns
+        merchantPatterns: patterns,
+        merchantVariants: variants
       };
 
       const url = id ? `/api/merchant/products/${id}` : '/api/merchant/products';
@@ -190,7 +210,7 @@ export const MerchantProductForm: React.FC = () => {
                 </div>
               </div>
               <div>
-                <label className="block text-xs mb-1 font-bold">主图 (仅限.png, ≥800x800, 透明平铺图)</label>
+                <label className="block text-xs mb-1 font-bold">主图 (仅限.png, ≥800x800, 透明平铺)</label>
                 <input type="file" accept=".png" ref={fileInputRef} onChange={handleFileChange} className="w-full text-sm mb-2" />
                 {preview && <img src={preview} className="w-32 h-32 object-contain border border-gold/30 bg-rice rounded" />}
               </div>
@@ -207,8 +227,39 @@ export const MerchantProductForm: React.FC = () => {
             </div>
           </div>
           
-          <button type="submit" disabled={loading} className="w-full py-3 bg-vermilion text-white font-bold rounded disabled:opacity-50">
-            {loading ? '保存中...' : '保存商品'}
+          <div className="border border-gold/30 p-4 rounded bg-white mt-6">
+            <h3 className="font-serif font-bold text-sm mb-4 text-vermilion">高级配置：多规格图片矩阵 (颜色 x 面料)</h3>
+            <p className="text-xs text-ink-muted mb-4">若您同时设置了颜色和面料，可为每一种特定的组合（例如"红色-真丝"）单独上传实物图片。在虚拟试穿时，系统将精确匹配此处上传的图片。</p>
+            {variants.length === 0 ? <div className="text-xs text-ink-muted">请先添加颜色或面料选项。</div> : (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {variants.map((v, i) => {
+                  const colorName = colors.find(c => c.id === v.colorId)?.name || '';
+                  const fabricName = fabrics.find(f => f.id === v.fabricId)?.name || '';
+                  const label = [colorName, fabricName].filter(Boolean).join(' + ');
+                  return (
+                    <div key={i} className="border border-gold/10 p-3 rounded flex flex-col items-center gap-2 bg-rice-light">
+                      <div className="text-xs font-bold text-center h-8 flex items-center">{label}</div>
+                      {v.image ? <img src={v.image} className="w-20 h-20 object-cover border border-gold/30 rounded" /> : <div className="w-20 h-20 bg-white border border-gold/30 border-dashed rounded flex items-center justify-center text-[10px] text-ink-muted">暂无对应图</div>}
+                      <label className="text-[10px] text-vermilion cursor-pointer hover:underline bg-vermilion/5 px-2 py-1 rounded">
+                        上传专用图
+                        <input type="file" accept="image/*" className="hidden" onChange={async (e) => {
+                          const file = e.target.files?.[0]; if (!file) return;
+                          setLoading(true);
+                          try {
+                            const url = await handleImageUpload(file);
+                            setVariants(prev => { const n = [...prev]; n[i].image = url; return n; });
+                          } catch(err:any){ setError(err.message); } finally { setLoading(false); }
+                        }} />
+                      </label>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+          
+          <button type="submit" disabled={loading} className="w-full py-4 mt-6 bg-vermilion text-white font-bold rounded disabled:opacity-50 text-lg shadow-md hover:bg-red-800 transition-colors">
+            {loading ? '保存中...' : '确认发布 / 保存'}
           </button>
         </form>
       </div>

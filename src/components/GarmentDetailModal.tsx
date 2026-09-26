@@ -37,7 +37,16 @@ export const GarmentDetailModal: React.FC<GarmentDetailModalProps> = ({
   const currentFabricName = (garment.fabrics && (garment.merchantFabrics || garment.fabrics || []).length > 0) ? ((garment.merchantFabrics || garment.fabrics || [])[selectedFabricIndex] || (garment.merchantFabrics || garment.fabrics || [])[0]) : '默认面料';
   
 
-    const mainImage = (currentColor as any).image || (typeof currentFabricName === 'object' && currentFabricName !== null ? currentFabricName.image : null) || garment.image;
+    let mainImage = (currentColor as any).image || (typeof currentFabricName === 'object' && currentFabricName !== null ? currentFabricName.image : null) || garment.image;
+  if (garment.merchantVariants && garment.merchantVariants.length > 0) {
+    const variant = garment.merchantVariants.find((v: any) => 
+      (v.colorId === (currentColor as any).id || v.colorId === (currentColor as any).name || (!v.colorId && !(garment.merchantColors && garment.merchantColors.length > 0))) &&
+      (v.fabricId === (currentFabricName as any).id || v.fabricId === (currentFabricName as any).name || (!v.fabricId && !(garment.merchantFabrics && garment.merchantFabrics.length > 0)))
+    );
+    if (variant && variant.image) {
+      mainImage = variant.image;
+    }
+  }
   // 映射面料类型
   const getFabricType = (index: number): 'silk' | 'satin' | 'embroidery' => {
     if (index === 0) return 'silk';

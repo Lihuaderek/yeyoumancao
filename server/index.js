@@ -351,15 +351,14 @@ app.get('*', (req, res) => {
 });
 
 // 启动服务
-const server = 
+let server;
 if (process.env.VERCEL) {
-  module.exports = app;
+  // export default app;
 } else {
-  app.listen(PORT, () => {
+  server = app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });
+  server.setTimeout(35000);
 }
-  
-
-server.setTimeout(35000);
+export default app;
 

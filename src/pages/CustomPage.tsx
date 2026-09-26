@@ -100,7 +100,16 @@ export const CustomPage: React.FC = () => {
 
   const estimatedPrice = currentStyle.basePrice + (currentColor.priceOffset || 0) + (currentFabric.priceOffset || 0) + (currentPattern.priceOffset || 0);
   
-  const displayImage = currentColor?.image || currentFabric?.image || currentPattern?.image || currentStyle.image;
+  let displayImage = currentColor?.image || currentFabric?.image || currentPattern?.image || currentStyle.image;
+  if (currentStyle.merchantVariants && currentStyle.merchantVariants.length > 0) {
+    const variant = currentStyle.merchantVariants.find((v: any) => 
+      (v.colorId === currentColor.id || v.colorId === currentColor.name || (!v.colorId && !(currentStyle.merchantColors && currentStyle.merchantColors.length > 0))) &&
+      (v.fabricId === currentFabric.id || v.fabricId === currentFabric.name || (!v.fabricId && !(currentStyle.merchantFabrics && currentStyle.merchantFabrics.length > 0)))
+    );
+    if (variant && variant.image) {
+      displayImage = variant.image;
+    }
+  }
 
 
   // 过滤展示款式

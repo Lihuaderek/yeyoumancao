@@ -11,6 +11,7 @@ export type GarmentCategory = string;
 export type GarmentGender = 'men' | 'women' | 'unisex';
 
 export interface Garment {
+  merchantVariants?: { colorId: string; fabricId: string; image: string }[];
   merchantColors?: MerchantOption[];
   merchantFabrics?: MerchantOption[];
   merchantPatterns?: MerchantOption[];
